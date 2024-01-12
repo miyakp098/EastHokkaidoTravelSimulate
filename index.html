@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>Sample GoogleMap with Route and Numbered Markers</title>
+<script src="https://maps.googleapis.com/maps/api/js?key={APIkey}&libraries=places&language=ja"></script>
+
+<link rel="stylesheet" href="map.css">
+
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="route-info">
+    <p>出発地</p>
+    <!-- Start地点のボタン -->
+    <div id="start-buttons">
+      <button id="start-網走" onclick="setStart('網走')">網走</button>
+      <button id="start-知床第一ホテル" onclick="setStart('知床第一ホテル')">知床第一ホテル</button>
+      <button id="start-札幌" onclick="setStart('札幌')">札幌</button>
+    </div>
+
+    <p>目的地</p>
+     <!-- End地点のボタン -->
+    <div id="end-buttons">
+      <button id="end-網走" onclick="setEnd('網走')">網走</button>
+      <button id="end-知床第一ホテル" onclick="setEnd('知床第一ホテル')">知床第一ホテル</button>
+      <button id="end-札幌" onclick="setEnd('札幌')">札幌</button>
+    </div>
+
+    <button onclick="calculateAndDisplayRoute()">ルート検索</button>
+    <div id="points"></div>
+    <div id="duration">総所要時間: 未定</div>
+  </div>
+
+<script src="map.js"></script>
+
+</body>
+</html>

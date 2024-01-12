@@ -1,0 +1,7 @@
+画像のリサイズ方法
+cdコマンドでこのディレクトリに移動
+python3 resize.py
+を実行
+
+参考
+https://sgs-prog.com/python-image-size-change/

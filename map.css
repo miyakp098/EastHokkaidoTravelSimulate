@@ -1,0 +1,11 @@
+html, body { height: 100%; margin: 0; padding: 0; }
+#map { height: 80%; width: 50%; float: left; }
+#route-info { width: 40%; float: right; padding: 20px; }
+#points { font-size: 16px; }
+#duration { font-size: 20px; }
+
+/* startとendの選択されたボタン色を変える */
+.selected {
+    background-color: #8a8a8a; /* 選択されたボタンの背景色 */
+    color: rgb(0, 0, 0); /* 選択されたボタンの文字色 */
+}
