@@ -1,0 +1,23 @@
+{
+  "name": "easthokkaidotravelsimulate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "map.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miyakp098/EastHokkaidoTravelSimulate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miyakp098/EastHokkaidoTravelSimulate/issues"
+  },
+  "homepage": "https://github.com/miyakp098/EastHokkaidoTravelSimulate#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
