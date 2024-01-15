@@ -2,6 +2,7 @@ var map;
 var directionsService;
 var directionsDisplay;
 var customMarkers = [];
+var waypoints = [];
 
 var start, end;
 
@@ -12,14 +13,6 @@ var locationDetails = {
   },
   '天に続く道展望台': {
     info: '天に続く道展望台についての情報がここに表示されます。',
-    stayTime: 20
-  },
-  '小清水': {
-    info: '小清水の魅力的な情報をここに紹介します。',
-    stayTime: 40
-  },
-  '清里町': {
-    info: '清里町に関する興味深い詳細がここにあります。',
     stayTime: 20
   },
   '美幌峠': {
@@ -34,11 +27,89 @@ var locationDetails = {
     info: '網走の歴史や文化に関する情報がここにあります。',
     stayTime: 20
   },
-  '知床第一ホテル': {
-    info: '知床第一ホテルの豪華さと快適さについての詳細がここに表示されます。',
+  '知床': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
     stayTime: 20
-  }
+  },
+  '神の子池': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  'オンネトー': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  'オシンコシンの滝': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
 };
+
+//地点の名前
+
+  const p1 = '網走'
+  const p2 = '阿寒'
+  const p3 = '知床'
+
+  const airport1 = '女満別空港'
+  //const airport2 = '紋別空港'
+  // const p5 = '根室'
+  // const p6 = '釧路'
+  // const p7 = '帯広'
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+    // 地点の名前
+    const points = [p1, p2, p3, airport1];
+
+    // ボタンを追加するためのdiv要素を取得
+    const startButtonsDiv = document.getElementById('start-buttons');
+    const endButtonsDiv = document.getElementById('end-buttons');
+
+    // ボタン生成と追加の関数
+    function addButtonsToDiv(div, buttonIdPrefix, onClickFunction) {
+        points.forEach(function(point) {
+            // 新しいボタン要素を作成
+            const button = document.createElement('button');
+            button.id = buttonIdPrefix + '-' + point;
+            button.textContent = point;
+
+            // onclickイベントハンドラを設定
+            button.onclick = function() {
+                onClickFunction(point);
+            };
+
+            // ボタンをdivに追加
+            div.appendChild(button);
+        });
+    }
+
+    // Start地点のボタンを追加
+    addButtonsToDiv(startButtonsDiv, 'start', setStart);
+
+    // End地点のボタンを追加
+    addButtonsToDiv(endButtonsDiv, 'end', setEnd);
+});
+
+//観光地の名前
+
+  const aba1 = '網走監獄'
+  const aba2 = 'オホーツク流氷館';
+  const aba3 = '北海道立北方民族博物館';
+  
+
+  const s1 = 'ラムサール条約湿地～濤沸湖～'
+  const s2 = '天に続く道展望台'
+  const s3 = '美幌峠'
+  const s4 = '摩周湖第一展望台'
+  const s5 = '神の子池'
+  const s6 = '小清水原生花園'
+  const s7 = '阿寒湖'
+  const s8 = 'オンネトー'
+  const s9 = 'オシンコシンの滝'
+  const s10 = 'メルヘンの丘';
+
+
 
 function initMap() {
   directionsService = new google.maps.DirectionsService();
@@ -50,6 +121,56 @@ function initMap() {
   });
   directionsDisplay.setMap(map);
 }
+
+
+function calculateWaypoints(start, end) {
+  let baseRoutes = {};
+
+  //網走ー知床ルート
+  if ((start === airport1 || start === p3) && (end === airport1 || end === p3) && start !== end) {
+    baseRoutes[airport1 + '_' + p3] = [
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
+    ];
+  }else if((start === airport1 || start === p2) && (end === airport1 || end === p2) && start !== end){
+    baseRoutes[airport1 + '_' + p2] = [
+      [{location: s3, stopover: true}, {location: s7, stopover: true},{location: p2, stopover: true}],
+      [{location: s3, stopover: true}, {location: s4, stopover: true},{location: s5, stopover: true},
+         {location: s7, stopover: true},{location: p2, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+        {location: s4, stopover: true},{location: s5, stopover: true},
+        {location: s7, stopover: true},{location: p2, stopover: true}],
+    ];
+  }else if((start === airport1 || start === p1) && (end === airport1 || end === p1) && start !== end){
+    baseRoutes[airport1 + '_' + p2] = [
+      [{location: 10, stopover: true},{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true}]
+    ];
+  }
+
+  waypoints = []; // 関数が呼ばれるたびにwaypointsをリセット
+  let routeKey = start + '_' + end;
+
+  if (baseRoutes[routeKey]) {
+    waypoints = baseRoutes[routeKey];
+  } else {
+    routeKey = end + '_' + start;
+    if (baseRoutes[routeKey]) {
+      // 各ルートを逆順にしてwaypointsに格納
+      baseRoutes[routeKey].forEach(route => {
+        waypoints.push(route.slice().reverse());
+      });
+    }
+  }
+}
+
+
+
 
 //スタート地点とゴール地点の格納
 function setStart(location) {
@@ -73,24 +194,7 @@ function updateButtonStyles(buttonGroupId, selectedButtonId) {
 function calculateAndDisplayRoute() {
   clearCustomMarkers();
 
-  if (start === '網走' && end === '知床第一ホテル') {
-    waypoints = [
-        [{location: 'ラムサール条約湿地～濤沸湖～', stopover: true}, {location: '天に続く道展望台', stopover: true}],
-        [{location: '小清水', stopover: true}, {location: '清里町', stopover: true}],
-        [{location: '美幌', stopover: true}, {location: '小清水', stopover: true}, {location: '清里町', stopover: true}],
-        [{location: '美幌峠', stopover: true}, {location: '摩周湖第一展望台', stopover: true}],
-    ];
-  } else if (start === '知床第一ホテル' && end === '網走') {
-    waypoints = [
-      [{location: '天に続く道展望台', stopover: true}, {location: 'ラムサール条約湿地～濤沸湖～', stopover: true}],
-      [{location: '清里町', stopover: true}, {location: '小清水', stopover: true}],
-      [{location: '清里町', stopover: true}, {location: '小清水', stopover: true}, {location: '美幌', stopover: true}],
-      [{location: '摩周湖第一展望台', stopover: true}, {location: '美幌峠', stopover: true}],
-      ];
-  } else {
-    //例外処理、startとendが設定されていない場合など
-  }
-  
+  calculateWaypoints(start, end)
 
   var randomIndex = Math.floor(Math.random() * waypoints.length);
   var waypoint = waypoints[randomIndex];
