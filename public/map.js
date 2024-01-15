@@ -27,7 +27,7 @@ var locationDetails = {
     info: '網走の歴史や文化に関する情報がここにあります。',
     stayTime: 20
   },
-  '知床': {
+  '知床第一ホテル': {
     info: '知床の歴史や文化に関する情報がここにあります。',
     stayTime: 20
   },
@@ -43,13 +43,41 @@ var locationDetails = {
     info: '知床の歴史や文化に関する情報がここにあります。',
     stayTime: 20
   },
+  '女満別空港': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  'メルヘンの丘': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  '小清水原生花園': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  'ニュー阿寒ホテル': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  '網走監獄': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  'オホーツク流氷館': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
+  '北海道立北方民族博物館': {
+    info: '知床の歴史や文化に関する情報がここにあります。',
+    stayTime: 20
+  },
 };
 
 //地点の名前
 
   const p1 = '網走'
-  const p2 = '阿寒'
-  const p3 = '知床'
+  const p2 = '阿寒'//ニュー阿寒ホテル
+  const p3 = '知床'//知床第一ホテル
 
   const airport1 = '女満別空港'
   //const airport2 = '紋別空港'
@@ -104,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const s4 = '摩周湖第一展望台'
   const s5 = '神の子池'
   const s6 = '小清水原生花園'
-  const s7 = '阿寒湖'
+  const s7 = ''
   const s8 = 'オンネトー'
   const s9 = 'オシンコシンの滝'
   const s10 = 'メルヘンの丘';
@@ -126,30 +154,51 @@ function initMap() {
 function calculateWaypoints(start, end) {
   let baseRoutes = {};
 
-  //網走ー知床ルート
-  if ((start === airport1 || start === p3) && (end === airport1 || end === p3) && start !== end) {
-    baseRoutes[airport1 + '_' + p3] = [
+  
+  if ((start === airport1 || start === '知床第一ホテル') && (end === airport1 || end === '知床第一ホテル') && start !== end) {
+    //女満別空港ー知床ルート
+    baseRoutes[airport1 + '_' + '知床第一ホテル'] = [
+      [{location: s1, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true}],
       [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
-         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
-      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
-         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
-      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
-         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
-      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
-         {location: s1, stopover: true},{location: s2, stopover: true},{location: s8, stopover: true},{location: s9, stopover: true}],
+        {location: s1, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true}]
     ];
-  }else if((start === airport1 || start === p2) && (end === airport1 || end === p2) && start !== end){
-    baseRoutes[airport1 + '_' + p2] = [
-      [{location: s3, stopover: true}, {location: s7, stopover: true},{location: p2, stopover: true}],
-      [{location: s3, stopover: true}, {location: s4, stopover: true},{location: s5, stopover: true},
-         {location: s7, stopover: true},{location: p2, stopover: true}],
+  }else if((start === airport1 || start === 'ニュー阿寒ホテル') && (end === airport1 || end === 'ニュー阿寒ホテル') && start !== end){
+    //女満別空港ー阿寒
+    baseRoutes[airport1 + '_' + 'ニュー阿寒ホテル'] = [
+      [{location: s3, stopover: true}],
+      [{location: s3, stopover: true}, {location: s5, stopover: true},{location: s4, stopover: true}],
       [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
-        {location: s4, stopover: true},{location: s5, stopover: true},
-        {location: s7, stopover: true},{location: p2, stopover: true}],
+        {location: s5, stopover: true},{location: s4, stopover: true},],
     ];
   }else if((start === airport1 || start === p1) && (end === airport1 || end === p1) && start !== end){
-    baseRoutes[airport1 + '_' + p2] = [
-      [{location: 10, stopover: true},{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true}]
+    //女満別空港ー網走
+    baseRoutes[airport1 + '_' + p1] = [
+      [{location: s10, stopover: true}]
+    ];
+  }else if ((start === p1 || start === '知床第一ホテル') && (end === p1 || end === '知床第一ホテル') && start !== end) {
+    //網走ー知床ルート
+    baseRoutes[p1 + '_' + '知床第一ホテル'] = [
+      [{location: s1, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+        {location: s1, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true}]
+    ];
+  }else if((start === p1 || start === 'ニュー阿寒ホテル') && (end === p1 || end === 'ニュー阿寒ホテル') && start !== end){
+    //網走ー阿寒
+    baseRoutes[p1 + '_' + 'ニュー阿寒ホテル'] = [
+      [{location: s10, stopover: true},{location: s3, stopover: true}],
+      [{location: s3, stopover: true}, {location: s4, stopover: true}],
+      [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
+        {location: s5, stopover: true},{location: s4, stopover: true},],
+    ];
+  }else if((start === 'ニュー阿寒ホテル' || start === '知床第一ホテル') && (end === p2 || end === '知床第一ホテル') && start !== end){
+    //
+    baseRoutes['ニュー阿寒ホテル' + '_' + '知床第一ホテル'] = [
+      [{location: s4, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true},],
+      [{location: s3, stopover: true}, {location: s10, stopover: true},{location: aba1, stopover: true}, 
+        {location: aba2, stopover: true},{location: aba3, stopover: true},
+        {location: s2, stopover: true},{location: s9, stopover: true}],
+        [{location: s3, stopover: true}, {location: s10, stopover: true},
+          {location: s2, stopover: true},{location: s9, stopover: true}]
     ];
   }
 
@@ -174,12 +223,25 @@ function calculateWaypoints(start, end) {
 
 //スタート地点とゴール地点の格納
 function setStart(location) {
-  start = location;
+  if(location === '知床'){
+    start = '知床第一ホテル';
+  }else if(location === '阿寒'){
+    start = 'ニュー阿寒ホテル';
+  }else{
+    start = location;
+  }
+  
   updateButtonStyles('start-buttons', 'start-' + location);
 }
 
 function setEnd(location) {
-  end = location;
+  if(location === '知床'){
+    end = '知床第一ホテル';
+  }else if(location === '阿寒'){
+    end = 'ニュー阿寒ホテル';
+  }else{
+    end = location;
+  }
   updateButtonStyles('end-buttons', 'end-' + location);
 }
 //ボタン選択した時の色を変える
@@ -237,7 +299,7 @@ function calculateAndDisplayRoute() {
       var routeHtml = '';
       // 出発地点の詳細情報
       var startDetails = locationDetails[start].info || '詳細情報が利用できません';
-      routeHtml += '<button class="accordion" onclick="onLocationClicked(\'start-panel\')">出発地点: ' + start + '</button>';
+      routeHtml += '<button class="accordion" onclick="onLocationClicked(\'start-panel\')">出発地点 1: ' + start + '</button>';
       routeHtml += '<div id="start-panel" class="panel" style="display: none;"><p>' + startDetails + '</p></div><br>';
 
       for (var i = 0; i < routeDetails.length; i++) {
@@ -253,7 +315,7 @@ function calculateAndDisplayRoute() {
         
 
         if (i < routeDetails.length - 1) {
-          routeHtml += '<button class="accordion" onclick="onLocationClicked(\'' + panelId + '\')">中間地点 ' + (i + 1) + ': ' + locationName + ' 　滞在時間: ' + locationStayTime + '分</button>';
+          routeHtml += '<button class="accordion" onclick="onLocationClicked(\'' + panelId + '\')">中間地点 ' + (i + 2) + ': ' + locationName + ' 　滞在時間: ' + locationStayTime + '分</button>';
           routeHtml += '<div id="' + panelId + '" class="panel" style="display: none;"><img src="' + imageSrc + '" alt="' + locationName + '"><p>' + locationInfo + '</p></div><br>';
 
           totalDuration += locationDetails[locationName].stayTime*60;
@@ -262,13 +324,17 @@ function calculateAndDisplayRoute() {
 
       // 目的地の詳細情報
       var endDetails = locationDetails[end].info || '詳細情報が利用できません';
-      routeHtml += '<button class="accordion" onclick="onLocationClicked(\'end-panel\')">目的地: ' + end + '</button>';
+      routeHtml += '<button class="accordion" onclick="onLocationClicked(\'end-panel\')">目的地 ' + + (i + 1) + ': ' + end + '</button>';
       routeHtml += '<div id="end-panel" class="panel" style="display: none;"><p>' + endDetails + '</p></div>';
 
      
 
       document.getElementById('points').innerHTML = routeHtml;
-      var totalDurationText = Math.floor(totalDuration / 60) + '分';
+      var hours = Math.floor(totalDuration / (60*60));
+      var minutes = Math.floor(totalDuration / 60) % 60;
+      //var totalDurationText = Math.floor(totalDuration / 60) + '分'+ hours+'+'+ minutes;確認用
+      var totalDurationText = hours + '時間' + minutes + '分';
+
       document.getElementById('duration').innerHTML = '総所要時間: ' + totalDurationText;
     } else {
       window.alert('Directions request failed due to ' + status);
