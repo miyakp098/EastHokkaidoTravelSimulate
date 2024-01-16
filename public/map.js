@@ -300,7 +300,7 @@ function calculateAndDisplayRoute() {
       // 出発地点の詳細情報
       var startDetails = locationDetails[start].info || '詳細情報が利用できません';
       routeHtml += '<button class="accordion" onclick="onLocationClicked(\'start-panel\')">出発地点 1: ' + start + '</button>';
-      routeHtml += '<div id="start-panel" class="panel" style="display: none;"><p>' + startDetails + '</p></div><br>';
+      routeHtml += '<div id="start-panel" class="panel" style="display: none;"><p class="accordion-info-start_end">' + startDetails + '</p></div><br>';
 
       for (var i = 0; i < routeDetails.length; i++) {
         var detail = routeDetails[i];
@@ -326,7 +326,7 @@ function calculateAndDisplayRoute() {
       // 目的地の詳細情報
       var endDetails = locationDetails[end].info || '詳細情報が利用できません';
       routeHtml += '<button class="accordion" onclick="onLocationClicked(\'end-panel\')">目的地 ' + + (i + 1) + ': ' + end + '</button>';
-      routeHtml += '<div id="end-panel" class="panel" style="display: none;"><p>' + endDetails + '</p></div>';
+      routeHtml += '<div id="end-panel" class="panel" style="display: none;"><p class="accordion-info-start_end">' + endDetails + '</p></div>';
 
      
 
