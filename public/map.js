@@ -190,8 +190,8 @@ function calculateWaypoints(start, end) {
       [{location: aba1, stopover: true}, {location: aba2, stopover: true},{location: aba3, stopover: true},
         {location: s5, stopover: true},{location: s4, stopover: true},],
     ];
-  }else if((start === 'ニュー阿寒ホテル' || start === '知床第一ホテル') && (end === p2 || end === '知床第一ホテル') && start !== end){
-    //
+  }else if((start === 'ニュー阿寒ホテル' || start === '知床第一ホテル') && (end === 'ニュー阿寒ホテル' || end === '知床第一ホテル') && start !== end){
+    //阿寒ー知床
     baseRoutes['ニュー阿寒ホテル' + '_' + '知床第一ホテル'] = [
       [{location: s4, stopover: true},{location: s2, stopover: true},{location: s9, stopover: true},],
       [{location: s3, stopover: true}, {location: s10, stopover: true},{location: aba1, stopover: true}, 
