@@ -1,5 +1,5 @@
-html, body { height: 100%; margin: 0; padding: 0; }
-#map { height: 80%; width: 60%; float: left; }
+html, body { height: 100%; margin: 10px; padding: 0; }
+#map { height: 80%; width: 60%; float: left;}
 #route-info { width: 37%; float: right; padding: 0px; }
 #points { font-size: 15px; }
 #duration { font-size: 20px; }
@@ -70,8 +70,13 @@ html, body { height: 100%; margin: 0; padding: 0; }
   .accordion-info {
     font-size: 12px; /* フォントサイズを指定 */
     color: #333;     /* 文字色を指定 */
-    margin: 0px 10px;   /* マージンを指定 */
+    margin: 0px 10px;   /* 上下のマージンを指定 */
     padding: 5px;    /* パディングを指定 */
   }
-  
-  
+
+  .accordion-info-start_end {
+    font-size: 12px; /* フォントサイズを指定 */
+    color: #333;     /* 文字色を指定 */
+    margin: 0px 10px;   /* 上下のマージンを指定 */
+    padding: 5px;    /* パディングを指定 */
+  }
