@@ -61,4 +61,17 @@ html, body { height: 100%; margin: 0; padding: 0; }
     background-color: #ddd; /* アクティブ時の背景色 */
     color: #000;            /* アクティブ時の文字色 */
   }
+
+  .accordion-image {
+    max-width: 430px;
+    height: auto;    /* 高さを自動調整 */
+    margin: 0 10px;
+  }
+  .accordion-info {
+    font-size: 12px; /* フォントサイズを指定 */
+    color: #333;     /* 文字色を指定 */
+    margin: 0px 10px;   /* マージンを指定 */
+    padding: 5px;    /* パディングを指定 */
+  }
+  
   

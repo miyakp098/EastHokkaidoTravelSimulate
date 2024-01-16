@@ -316,7 +316,8 @@ function calculateAndDisplayRoute() {
 
         if (i < routeDetails.length - 1) {
           routeHtml += '<button class="accordion" onclick="onLocationClicked(\'' + panelId + '\')">中間地点 ' + (i + 2) + ': ' + locationName + ' 　滞在時間: ' + locationStayTime + '分</button>';
-          routeHtml += '<div id="' + panelId + '" class="panel" style="display: none;"><img src="' + imageSrc + '" alt="' + locationName + '"><p>' + locationInfo + '</p></div><br>';
+          routeHtml += '<div id="' + panelId + '" class="panel" style="display: none;"><img src="' + imageSrc + '" alt="' + locationName + '" class="accordion-image"><p class="accordion-info">' + locationInfo + '</p></div><br>';
+
 
           totalDuration += locationDetails[locationName].stayTime*60;
         }
@@ -335,7 +336,7 @@ function calculateAndDisplayRoute() {
       //var totalDurationText = Math.floor(totalDuration / 60) + '分'+ hours+'+'+ minutes;確認用
       var totalDurationText = hours + '時間' + minutes + '分';
 
-      document.getElementById('duration').innerHTML = '総所要時間: ' + totalDurationText;
+      document.getElementById('duration').innerHTML = '　総所要時間: ' + totalDurationText;
     } else {
       window.alert('Directions request failed due to ' + status);
     }
