@@ -11,3 +11,4 @@
 - Node.js
 - Google Aaps API
 - デプロイ: Render上でホスティング
+- UptimeRobot: Renderの無料プランでは非アクティブな状態が15分間続くとサービスがスリープしてしまうためその対策として使用
